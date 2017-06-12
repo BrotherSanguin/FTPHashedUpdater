@@ -156,53 +156,53 @@ namespace FTPHashedUpdater
       IDictionary<string, string> hashdictlocal;
       if (!File.Exists(hashfilelocal))
       {
-        Log(LogMode.Waring, "Lokale Hashdatei " + hashfilelocal + " nicht vorhanden. Alles wird geladen.");
+        Log(LogMode.Waring, "Local Hashfile " + hashfilelocal + " does not exist. Loading all.");
         hashdictlocal = new Dictionary<string, string>();
       }
       else {
-        Log(LogMode.Debug, "Lade lokale Hashdatei " + hashfilelocal + ".");
+        Log(LogMode.Debug, "Loading local Hashfile " + hashfilelocal + ".");
         hashdictlocal = ReadHashFile(hashfilelocal);
       }
       var downloadlist = new List<String>();
       if (!DownloadFile(_settings.HashFileToCheck))
       {
-        Log(LogMode.Error, "HashDatei [" + _settings.HashFileToCheck + "] konnte nicht vom Server geladen werden");
+        Log(LogMode.Error, "Hashfile [" + _settings.HashFileToCheck + "] could not be downloaded from server");
         return;
       }
 
       var downhashfile = Path.Combine(Path.Combine(bdir, TEMP), _settings.HashFileToCheck);
-      Log(LogMode.Debug, "Lade remote Hashdatei " + downhashfile + ".");
+      Log(LogMode.Debug, "Loading remote Hashfile " + downhashfile + ".");
       var downhashdict = ReadHashFile(downhashfile);
 
       foreach (var key in downhashdict.Keys)
       {
         if (!hashdictlocal.ContainsKey(key))
         {
-          Log(LogMode.Debug, "Datei " + key + " fehlt im lokalen Hashfile. Vorgemerkt zum Laden.");
+          Log(LogMode.Debug, "File " + key + " is missing in local Hashfile. Marked for download.");
           downloadlist.Add(key);
         }
         else if (!Equals(downhashdict[key], hashdictlocal[key]))
         {
-          Log(LogMode.Debug, "Datei " + key + " Hash ungleich. Vorgemerkt zum Laden.");
+          Log(LogMode.Debug, "File " + key + " Hash unequal. Marked for download.");
           downloadlist.Add(key);
         }
       }
       if (downloadlist.Count == 0)
       {
-        Log(LogMode.Debug, "Kein download nötig, alle Dateien aktuell");
+        Log(LogMode.Debug, "No download necessary, all files up to date.");
         return;
       }
 
       GlobalProgress.TotlalProgress = GetTotalByteSizeOfRemoteFiles(downloadlist);
       try
       {
-        Log(LogMode.Debug, "Starte downloads...");
+        Log(LogMode.Debug, "Starting dowloads...");
         foreach (var todownload in downloadlist)
         {
           if (!DownloadFile(todownload))
           {
             //Wenn ein Download Fehlschlägt, beenden!
-            Log(LogMode.Error, "HashDatei [" + _settings.HashFileToCheck + "] konnte nicht vom Server geladen werden");
+            Log(LogMode.Error, "Hashfile [" + _settings.HashFileToCheck + "] could not be downloaded from server");
             Directory.Delete(temp, true);
             return;
           }
@@ -217,7 +217,7 @@ namespace FTPHashedUpdater
         return;
       }
       //Gedownloadete Dateien aus dem Temp-Verzeichnis in das Aktuelle verschieben
-      Log(LogMode.Debug, "Downloads fertig, verschiebe Daten aus dem Temp-Verzeichnis nach " + _settings.FolderToUpdate);
+      Log(LogMode.Debug, "Downloads finished, moving data from Temp-Directory into " + _settings.FolderToUpdate);
       foreach (var downloaded in downloadlist)
       {
         var realfile =
@@ -225,20 +225,20 @@ namespace FTPHashedUpdater
           downloaded.Remove(0, 1) : downloaded;
         var tmpfile = Path.Combine(temp, realfile);
         var targetfile = Path.Combine(_settings.FolderToUpdate, downloaded);
-        Log(LogMode.Debug, "Verschiebe [" + downloaded + "]");
+        Log(LogMode.Debug, "Moving [" + downloaded + "]");
         CreateDirectoryIfNotExists(targetfile);
         File.Copy(tmpfile, targetfile, true);
         File.Delete(tmpfile);
       }
       //Da Hashfile nicht teil der DownloadListe war muss es hier nochmal extra behandelt werden
       var hashfile = Path.Combine(_settings.FolderToUpdate, _settings.HashFileToCheck);
-      Log(LogMode.Debug, "Verschiebe [" + _settings.HashFileToCheck + "]");
+      Log(LogMode.Debug, "Moving [" + _settings.HashFileToCheck + "]");
       CreateDirectoryIfNotExists(hashfile);
       File.Copy(downhashfile, hashfile, true);
       File.Delete(downhashfile);
       //Temp-Dir löschen
       Directory.Delete(temp, true);
-      Log(LogMode.Debug, "Verschieben erfolgreich Update Fertig!");
+      Log(LogMode.Debug, "Moving sucess Update finished!");
       IsUpdating = false;
     }
 
