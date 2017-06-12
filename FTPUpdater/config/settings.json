@@ -1,0 +1,8 @@
+{
+  "$type": "FTPUpdater.Settings, FTPUpdater",
+  "FolderToUpdate": ".",
+  "HashFileToCheck": "Hashfile.txt",
+  "FTPServerAdress": "127.0.0.1:4890",
+  "FTPUser": "FTPUser",
+  "FTPPass": "FTPUserPassword"
+}

@@ -1,0 +1,17 @@
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\config\settings.json
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\FTPHashedUpdater.exe.config
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\FTPHashedUpdater.exe
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\FTPHashedUpdater.pdb
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\Newtonsoft.Json.dll
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\Newtonsoft.Json.pdb
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\bin\Debug\Newtonsoft.Json.xml
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater.csprojResolveAssemblyReference.cache
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\Main.g.cs
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\App.g.cs
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater_MarkupCompile.cache
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater_MarkupCompile.lref
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\Main.baml
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater.g.resources
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater.exe
+D:\WorkSpace\DotNot\FTPHashedUpdater\FTPUpdater\obj\Debug\FTPHashedUpdater.pdb
